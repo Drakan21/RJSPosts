@@ -1,0 +1,21 @@
+
+.register-view {
+    height: 100%;
+    display: block;
+    margin-block-start: 1rem;
+}
+.registration-form {
+    max-width: 550px;
+    margin: 0px auto;
+}
+.registration-form fieldset {
+    padding: 1rem;
+    border-radius: 0.4rem;
+}
+.registration-form fieldset legend {
+    padding-inline: 0.5rem;
+    font-size: 1.4rem;
+}
+.registration-form fieldset > *+* {
+    margin-block-end: 1rem;
+}

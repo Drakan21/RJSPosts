@@ -1,0 +1,43 @@
+:root {
+    --required: orange;
+    --normal: steelblue;
+}
+
+.validated-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+}
+.validated-input .input-container {
+    width: 100%;
+    position: relative;
+}
+.validated-input input {
+    width: 100%;
+    position: relative;
+    padding-inline-start: 0.5rem;
+    padding-inline-end: 20px;
+    border: 1px;
+}
+.required {
+    border-color: var(--required);
+}
+.normal {
+    border-color: var(--normal);
+}
+
+.validated-input .validation-mark {
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    font-size: inherit;
+}
+.validation-note {
+    padding: 0.4rem;
+}
+.label {
+    font-size: 1.2rem;
+    text-transform: capitalize;
+}

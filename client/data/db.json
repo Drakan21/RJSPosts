@@ -1,0 +1,11 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "datetime": "March 25, 2022 6:39:25 PM",
+      "title": "My First Post",
+      "body": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem officia assumenda consequuntur earum, incidunt error odit natus in itaque cum hic ipsam deserunt? Blanditiis mollitia cumque adipisci accusamus. Architecto facere officiis nostrum vel repudiandae minus error voluptatum quos doloremque vero reiciendis quasi dolorum, adipisci rerum fugiat fugit molestiae, quod modi.",
+      "edited": true
+    }
+  ]
+}
