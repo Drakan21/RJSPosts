@@ -60,11 +60,13 @@ code {
 
 .sr-only {
 	position: absolute;
-	width: 0;
-	height: 0;
-	margin: -1px;
+	width: 1px;
+	height: 1px;
 	padding: 0;
+	margin: -1px;
 	overflow: hidden;
+	clip: rect(0,0,0,0);
+	border: 0;
 }
 .valid {
 	color: green;
@@ -330,10 +332,9 @@ textarea {
 	flex-direction: column;
 }
 .noPosts {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%);
+	display: grid;
+	height: 100%;
+	place-content: center;
 	color: hsl(var(--c-tx) / 0.4);
 }
 
@@ -354,6 +355,13 @@ textarea {
 }
 .missing h2 {
 	font-size: 2rem;
+}
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
 }
 
 /* **/
@@ -537,4 +545,19 @@ textarea {
 		width: 100%;
 		text-align: right;
 	}
+}
+
+/* */
+.user-menu {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0.4rem;
+}
+.user-menu svg {
+	font-size: 2rem;	
+}
+.user-menu svg:hover {
+	color:hsl(var(--c-link-h) / 1);
+	cursor: pointer;
 }
