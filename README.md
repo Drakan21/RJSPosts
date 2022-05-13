@@ -29,7 +29,12 @@ A Post/Blog application
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![login](./screenshot_login.png)
+![register](./screenshot_register.png)
+![home](./screenshot_home.png)
+![post](./screenshot_post.png)
+![profile](./screenshot_profile.png)
+
 
 ### Links
 
