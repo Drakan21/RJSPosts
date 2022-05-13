@@ -1,3 +1,4 @@
+// --- IMPORTS --- //
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -10,7 +11,8 @@ import Feed from "../../components/Feed";
 import STATUS from "../../api/commsStatus";
 import NoPosts from "../post/NoPosts";
 
-function Home() {
+// --- DECLARATIONS --- //
+const Home = () => {
     const dispatch = useDispatch();
     const posts = useSelector(selectAllFiltered);
     const status = useSelector(getPostStatus);

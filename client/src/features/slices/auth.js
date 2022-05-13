@@ -4,9 +4,21 @@ import AuthService from "../../api/authService";
 
 // --- DECLARATIONS --- //
 const user = {
+	id: "",
 	username: JSON.parse(localStorage.getItem("user")) ?? "",
-	token: null,
+	email: "",
+	accessToken: null,
 	roles: [],
+};
+
+const nullUser = () => {
+	return {
+		id: "",
+		username: "",
+		email: "",
+		accessToken: null,
+		roles: [],
+	};
 };
 
 // --- DEFINITIONS --- //
@@ -38,17 +50,6 @@ export const logout = createAsyncThunk("auth/logout", async (args, thunkAPI) => 
 	await AuthService.logout(token);
 });
 
-export const refresh = createAsyncThunk("auth/refresh", async (args, thunkAPI) => {
-	try {
-		const token = thunkAPI.getState().auth?.user?.accessToken;
-		const response = await AuthService.refresh(token);
-		return response.data;
-	} catch (error) {
-		const message = error?.response?.data?.message || error?.message || error.toString();
-		return thunkAPI.rejectWithValue(message);
-	}
-});
-
 const initialState = {
 	loggedIn: false,
 	user,
@@ -58,12 +59,17 @@ const initialState = {
 const authSlice = createSlice({
 	name: "auth",
 	initialState,
+	reducers: {
+		refresh(state, actions) {
+			state.user.accessToken = actions.payload;
+		},
+	},
 	extraReducers(builder) {
 		builder
 			.addCase(register.rejected, (state, action) => {
 				//
 				state.error = action.payload;
-				state.user = { token: null, username: "", roles: [] };
+				state.user = nullUser();
 			})
 			.addCase(login.fulfilled, (state, action) => {
 				//
@@ -72,25 +78,12 @@ const authSlice = createSlice({
 				state.user = { ...action.payload };
 			})
 			.addCase(login.rejected, (state, action) => {
+				state.error = "Login failed.";
 				state.user = "";
-				state.loggedIn = false;
-				state.token = null;
-			})
-			.addCase(refresh.fulfilled, (state, action) => {
-				//
-				state.error = null;
-				state.loggedIn = true;
-				state.user = { ...action.payload };
-			})
-			.addCase(refresh.rejected, (state, action) => {
-				//
-				state.user = { token: null, username: "", roles: [] };
-				state.error = action.payload;
 				state.loggedIn = false;
 			})
 			.addCase(logout.fulfilled, (state, action) => {
-				state.user = { token: null, username: "", roles: [] };
-				state.token = null;
+				state.user = nullUser();
 				state.loggedIn = false;
 			});
 	},
@@ -98,9 +91,13 @@ const authSlice = createSlice({
 
 //
 export const selectUsername = (state) => state.auth.user.username;
-export const selectAuthToken = (state) => state.auth.user.token;
+export const selectUserId = (state) => state.auth.user.id;
+export const selectAuthToken = (state) => state.auth.user.accessToken;
+export const selectEmail = (state) => state.auth.user.email;
 //
 export const selectLoggedIn = (state) => state.auth.loggedIn;
 export const selectAuthError = (state) => state.auth.error;
 //
+export const { refresh } = authSlice.actions;
+
 export default authSlice.reducer;

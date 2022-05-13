@@ -1,15 +1,17 @@
+// --- IMPORTS --- //
 import React, { useEffect, useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addPost } from "../slices/posts";
-import { selectUsername } from "../slices/auth";
+import { selectUserId } from "../slices/auth";
 
-function NewPost() {
+// --- DECLARATIONS --- //
+const NewPost = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const dispatch = useDispatch();
 
-    const author = useSelector(selectUsername);
+    const author = useSelector(selectUserId);
 
     const [postTitle, setPostTitle] = useState("");
     const [postBody, setPostBody] = useState("");
@@ -20,7 +22,7 @@ function NewPost() {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(
-            addPost({ title: postTitle, body: postBody, author }))
+            addPost({ title: postTitle?.trim(), body: postBody?.trim(), author }))
             .then(() => navigate('/', { replace: true }));
     };
 

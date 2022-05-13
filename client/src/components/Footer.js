@@ -1,8 +1,10 @@
+// --- IMPORTS --- //
 import React from "react";
 import { FaLaptop, FaTabletAlt, FaMobileAlt } from "react-icons/fa";
 import useWindowSize from "../hooks/useWindowSize";
 
-function Footer() {
+// --- DECLARATIONS --- //
+const Footer = () => {
 	const { width } = useWindowSize();
 	const today = new Date();
 	return (
@@ -18,7 +20,7 @@ function Footer() {
 							href="https://github.com/Drakan21"
 							target="_blank"
 							rel="noreferrer"
-							aria-label="Navigate to Drakan21 profile on GitHub"
+							aria-label="Navigate to Drakan21's profile on GitHub"
 						>
 							Drakan21
 						</a>
@@ -40,6 +42,6 @@ function Footer() {
 			</div>
 		</footer>
 	);
-}
+};
 
 export default Footer;

@@ -1,5 +1,7 @@
+// --- IMPORTS --- //
 import { useState, useEffect } from "react";
 
+// --- DECLARATIONS --- //
 const useWindowSize = () => {
 	const [windowSize, setWindowSize] = useState({
 		width: undefined,

@@ -1,5 +1,7 @@
+// --- IMPORTS --- //
 import { FaCompactDisc } from "react-icons/fa";
 
+// --- DECLARATIONS --- //
 const Process = ({ msg }) => {
 	return (
 		<div className="processing">

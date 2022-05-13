@@ -1,27 +1,30 @@
+// --- IMPORTS --- //
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-
 import PasswordField from "../../components/PasswordField";
 import { useDispatch, useSelector } from "react-redux";
 import { login, selectAuthError } from "../slices/auth";
 
-
+// --- DECLARATIONS --- //
 const Login = () => {
     const dispatch = useDispatch();
     let navigate = useNavigate();
     let location = useLocation();
-
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const error = useSelector(selectAuthError);
 
-
     const handleLogin = (e) => {
         e.preventDefault();
-        dispatch(login({ username, password })).then(() => {
-            navigate(location.state?.from || "/")
+        dispatch(login({ username, password })).then((resp) => {
+            if (resp.error) {
+                console.log(resp);
+                navigate("/login", { replace: true });
+            } else {
+                navigate(location.state?.from || "/");
+            }
         });
     };
 

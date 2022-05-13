@@ -4,7 +4,11 @@ const __model = require("../models/Post");
 
 /// get all posts
 const getAll = async (req, res) => {
-	const result = await __model.find().sort({ upDate: "ascending" }).all();
+	const result = await __model
+		.find()
+		.populate("author", "_id username")
+		.sort({ upDate: "ascending" })
+		.all();
 	if (!result) {
 		return res.status(204).json({ message: `No Posts Found.` });
 	}
@@ -18,7 +22,7 @@ const getById = async (req, res) => {
 	}
 	try {
 		const { id } = req.params;
-		const result = await __model.findById(id);
+		const result = await __model.findById(id).populate("author", "_id username");
 		if (!result) {
 			return res.status(204).json({ message: `Post could not be found.` });
 		}
@@ -29,13 +33,18 @@ const getById = async (req, res) => {
 };
 
 /// get post by user id
-const getByUser = async (req, res) => {
-	if (!req?.params?.user) {
+const getByUserId = async (req, res) => {
+	if (!req?.params?.id) {
 		return res.status(400).json({ message: `An ID parameter is required.` });
 	}
 	try {
-		const { user } = req.params;
-		const result = await __model.find({ user }).exec();
+		const { id } = req.params;
+		const result = await __model
+			.find({})
+			.where({ author: id })
+			.populate("author", "_id username")
+			.sort({ upDate: "ascending" })
+			.exec();
 		if (!result) {
 			return res.status(204).json({ message: `No Posts could be found for this user.` });
 		}
@@ -75,14 +84,14 @@ const update = async (req, res) => {
 
 	try {
 		const { id, author, title, body } = req.body;
-		const found = __model.findById(id);
+		const found = await __model.findById(id).populate("author", "_id");
 
 		if (!found) {
 			return res
 				.status(204)
 				.json({ message: `Post unavailable for edit (moved or deleted).` }); // Data not found
 		}
-		if (author !== found.author) {
+		if (author != found.author._id) {
 			return res.status(401).json({ message: `Post does not belong to this user.` }); // Unauthorized
 		}
 
@@ -130,7 +139,7 @@ const remove = async (req, res) => {
 module.exports = {
 	getAll,
 	getById,
-	getByUser,
+	getByUserId,
 	create,
 	update,
 	remove,

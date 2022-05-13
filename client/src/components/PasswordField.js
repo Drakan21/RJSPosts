@@ -1,6 +1,8 @@
+// --- IMPORTS --- //
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
+// --- DECLARATIONS --- //
 const PasswordField = ({ id, value, setValue }) => {
 	const [visible, setVisible] = useState(false);
 

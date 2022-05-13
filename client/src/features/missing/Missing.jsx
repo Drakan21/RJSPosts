@@ -1,6 +1,8 @@
+// --- IMPORTS --- //
 import { Link } from "react-router-dom";
 
-function Missing() {
+// --- DECLARATIONS --- //
+const Missing = () => {
     return (
         <main className="missing">
             <h1>404</h1>

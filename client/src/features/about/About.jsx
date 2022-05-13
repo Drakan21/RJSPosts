@@ -1,4 +1,4 @@
-
+// --- DECLARATIONS --- //
 const About = () => {
     return (
         <main className="aboutView">
@@ -10,9 +10,6 @@ const About = () => {
             <div className="aboutLinks">
                 <a href="https://github.com/Drakan21" target="_blank" rel="noreferrer">
                     GitHub
-                </a>
-                <a href="https://www.twitter.com/drakanion" target="_blank" rel="noreferrer">
-                    Twitter
                 </a>
             </div>
         </main>

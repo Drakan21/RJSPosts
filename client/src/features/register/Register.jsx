@@ -9,8 +9,8 @@ import { ValidatorTypes } from '../../hooks/useInputValidator';
 // css imports
 import "./Register.css";
 
-//
-function Register() {
+// --- DECLARATIONS --- //
+const Register = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const usernameField = useRef();

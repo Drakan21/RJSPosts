@@ -1,16 +1,18 @@
+// --- IMPORTS --- //
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate, useLocation, Navigate } from "react-router-dom";
-import { selectUsername } from "../slices/auth";
+import { useNavigate, useLocation, Navigate } from "react-router-dom";
+import { selectUserId } from "../slices/auth";
 import { selectPostById, updatePost } from "../slices/posts";
 
-function EditPost() {
+// --- DECLARATIONS --- //
+const EditPost = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const dispatch = useDispatch();
 
     const post = useSelector(selectPostById);
-    const author = useSelector(selectUsername);
+    const author = useSelector(selectUserId);
 
     const [title, setTitle] = useState(post?.title || "");
     const [body, setBody] = useState(post?.body || "");

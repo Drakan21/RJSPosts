@@ -1,12 +1,10 @@
-/**
- *  POST COMPONENT
- *
- */
+// --- IMPORTS --- //
 import React from "react";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 
-function Post({ post }) {
+// --- DECLARATIONS --- //
+const Post = ({ post }) => {
 	return (
 		<article className="post">
 			<div className="postHeader">
@@ -18,12 +16,14 @@ function Post({ post }) {
 					</small>
 				</Link>
 			</div>
-			<p className="postAuthor">{post.author}</p>
 			<p className="postBody">
 				{post.body.length <= 50 ? post.body : `${post.body.slice(0, 50)} ...`}
 			</p>
+			<p className="postAuthor">
+				:: <Link to={`/profile/${post.author._id}`}>{post.author.username}</Link>
+			</p>
 		</article>
 	);
-}
+};
 
 export default Post;

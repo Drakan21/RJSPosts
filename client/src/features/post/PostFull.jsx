@@ -1,23 +1,21 @@
-/**
- * SINGLE POST VIEW
- *
- */
+// --- IMPORTS --- //
 import React, { useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { useDispatch, useSelector } from "react-redux";
 import { getIsPostLoading, getPostById, removePost, selectPostById } from "../slices/posts";
-import { selectUsername } from "../slices/auth";
+import { selectUserId } from "../slices/auth";
 import Process from '../../components/Process';
 
-function PostFull() {
+// --- DECLARATIONS --- //
+const PostFull = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const post = useSelector(selectPostById);
 
     const loading = useSelector(getIsPostLoading);
-    const user = useSelector(selectUsername);
+    const user = useSelector(selectUserId);
 
     const handleDelete = (id) => {
         dispatch(
@@ -43,9 +41,10 @@ function PostFull() {
                                 {post.edited && <em> (edited)</em>}
                             </small>
                         </div>
-                        <p className="postAuthor">{post.author}</p>
+
                         <p className="postBody">{post.body}</p>
-                        {user === post.author && (
+                        <p className="postAuthor">:: <Link to={`/profile/${post.author._id}`}>{post.author.username}</Link></p>
+                        {user === post.author._id && (
                             <div className="buttons">
                                 <Link to={`/post/edit/${id}`}>
                                     <button className="postFormButton postEdit">edit</button>

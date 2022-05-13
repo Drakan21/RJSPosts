@@ -1,7 +1,7 @@
 // --- IMPORT --- //
 import axios, { axiosPrivate } from "./service";
 
-// --- DECLERATIONS --- //
+// --- DECLARATIONS --- //
 const POST_URL = "/posts";
 
 const getAll = async () => {
@@ -13,7 +13,6 @@ const getById = async (id) => {
 };
 
 const create = async (title, body, author, token) => {
-	console.log(token);
 	return axiosPrivate.post(
 		POST_URL,
 		{ title, body, author },
@@ -27,7 +26,6 @@ const create = async (title, body, author, token) => {
 };
 
 const update = async (id, title, body, author, token) => {
-	console.log(token);
 	return axiosPrivate.put(
 		`${POST_URL}/${id}`,
 		{ id, title, body, author },

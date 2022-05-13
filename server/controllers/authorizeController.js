@@ -43,7 +43,13 @@ const authenticate = async (req, res) => {
 
 		// construct response:
 		res.cookie("jwt", refTk, REF_CK);
-		res.json({ roles, accessToken: accTk, username: found.username });
+		res.json({
+			id: found._id,
+			roles,
+			accessToken: accTk,
+			username: found.username,
+			email: found.email,
+		});
 	} else {
 		res.sendStatus(401); // Unauthorized
 	}

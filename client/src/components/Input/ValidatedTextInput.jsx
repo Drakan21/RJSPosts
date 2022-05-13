@@ -1,9 +1,11 @@
+// --- IMPORTS --- //
 import { useState, useEffect, forwardRef, useRef, useImperativeHandle } from 'react'
 import { FaCheck, FaTimes, FaInfoCircle } from 'react-icons/fa';
 import useInputValidator from '../../hooks/useInputValidator';
 
 import './ValidatedInput.css';
 
+// --- DELARATIONS --- //
 const ValidatedTextInput = ({ setInputValue, name, type, required = true, validatorType = null }, ref) => {
   const { validator, note } = useInputValidator(validatorType);
   const [value, setValue] = useState('');

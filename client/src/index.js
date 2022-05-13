@@ -1,3 +1,4 @@
+// --- IMPORTS --- //
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
@@ -8,7 +9,9 @@ import { Provider } from "react-redux";
 import { store } from "./app/store";
 
 import "./index.css";
+import initInterceptors from "./api/interceptors";
 
+// --- DECLARATIONS --- //
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
@@ -19,3 +22,5 @@ ReactDOM.render(
 	</React.StrictMode>,
 	document.getElementById("root")
 );
+
+initInterceptors(store);

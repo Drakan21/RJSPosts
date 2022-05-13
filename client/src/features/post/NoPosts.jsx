@@ -1,6 +1,7 @@
-
+// --- IMPORTS --- //
 import { FaFolderOpen } from 'react-icons/fa';
 
+// --- DECLARATIONS --- //
 const NoPosts = () => {
     return (
         <main className='content-view noPosts'>
