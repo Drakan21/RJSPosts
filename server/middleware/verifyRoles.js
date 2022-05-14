@@ -1,3 +1,7 @@
+/**
+ * Role verification middleware
+ * - checks assigned user roles for determining route access
+ */
 // middleware for use on routes
 const verifyRoles = (...permittedRoles) => {
 	return (req, res, next) => {

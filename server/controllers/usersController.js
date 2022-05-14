@@ -1,3 +1,6 @@
+/**
+ * User lists and requests for profiles
+ */
 const __model = require("../models/User");
 const __posts = require("../models/Post");
 

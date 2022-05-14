@@ -1,3 +1,6 @@
+/**
+ * Root authentication route for login handlers
+ */
 // --- IMPORT --- //
 const express = require("express");
 const router = express.Router();

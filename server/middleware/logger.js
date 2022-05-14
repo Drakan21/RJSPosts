@@ -1,3 +1,7 @@
+/**
+ * Logging handler for requests and errors on server
+ * - used to log incoming request timestamps / origins / routes / responses
+ */
 // --- IMPORTS --- //
 const fs = require("fs");
 const fsps = require("fs/promises");

@@ -1,3 +1,6 @@
+/**
+ * MongoDB connection
+ */
 // import mongoose
 const mongoose = require("mongoose");
 

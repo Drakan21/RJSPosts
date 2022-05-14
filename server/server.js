@@ -3,7 +3,7 @@ const express = require("express");
 const serv = express();
 // init mongoose
 const mongoose = require("mongoose");
-// init dotenv.
+// init dotenv - for using .env files
 require("dotenv").config();
 // core modules
 const path = require("path");
@@ -17,12 +17,14 @@ const { errors } = require("./middleware/errorHandler");
 // mw::utils
 const { log } = require("./middleware/logger");
 
-// cfg
+// MongoDB connection config / connection
 const { connect } = require("./config/dbConnector");
 
 // --- Auth --- //
 const { auth } = require("./middleware/verifyToken");
+// 3rd party middlewares for cookie management
 const cookies = require("cookie-parser");
+// 3rd party middlewares for date formatting
 const { set } = require("date-fns");
 
 // port

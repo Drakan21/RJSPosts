@@ -1,3 +1,6 @@
+/**
+ * Credentials middleware for all incoming requests
+ */
 // import permissable origins
 const perm = require("../config/permitted");
 

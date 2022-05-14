@@ -1,3 +1,6 @@
+/**
+ * Cross Origin Resource configs
+ */
 // import cors and origin permission
 const _cors = require("cors");
 const perm = require("./permitted");

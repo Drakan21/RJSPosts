@@ -1,3 +1,6 @@
+/**
+ * User roles
+ */
 const roles = {
 	admin: 2314,
 	editor: 4221,

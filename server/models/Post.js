@@ -1,3 +1,6 @@
+/**
+ * MongoDB Mongoose schema for Posts
+ */
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
@@ -30,6 +33,7 @@ const postSchema = new Schema({
 	},
 });
 
+// transform schema
 postSchema.set("toJSON", {
 	transform: (doc, result) => {
 		return {

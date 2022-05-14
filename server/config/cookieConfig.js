@@ -1,3 +1,6 @@
+/**
+ * Configuration for Auth Cookies
+ */
 const REF_CK = {
 	httpOnly: true,
 	sameSite: "None",

@@ -1,3 +1,6 @@
+/**
+ * Auth Token timeout configs
+ */
 const TOKEN_TIMEOUT = {
 	refresh: "1h",
 	access: "10s",

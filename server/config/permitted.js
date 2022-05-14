@@ -1,3 +1,6 @@
+/**
+ * Allowed request origins (change for prod/pub)
+ */
 // permitted request origins
 const permitted = [
 	"http://localhost:3000",

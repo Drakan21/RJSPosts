@@ -1,3 +1,6 @@
+/**
+ * Manage CRUD operations for POSTS
+ */
 // --- DEFINITIONS --- //
 
 const __model = require("../models/Post");

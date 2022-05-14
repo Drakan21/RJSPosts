@@ -1,3 +1,6 @@
+/**
+ * General error handler and response manager for server (as catchall) / access errors
+ */
 const { error } = require("./logger");
 
 const __errorHandler = (req, res, next) => {
